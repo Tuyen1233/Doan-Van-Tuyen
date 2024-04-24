@@ -34,7 +34,7 @@ public:
 	bool running() { return isRunning; }
 	void render();
 	void clean();
-
+	void reset();
 	bool dead;
 	bool dead2;
 	bool dead3;

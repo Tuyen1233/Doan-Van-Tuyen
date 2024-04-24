@@ -15,9 +15,6 @@ GameObject::GameObject(const char* texturesheet, int x, int y) {
     initialY = y; // L?u v? trí ban ??u
 }
 
-
-
-
 bool GameObject::checkCollision(int bulletX, int bulletY, int tankX, int tankY) {
     // Tính toán các tọa độ của hình chữ nhật bao quanh đạn và xe tăng
     int bulletLeft = bulletX;
@@ -139,7 +136,14 @@ void GameObject::handles(SDL_Event& event, std::vector<Bullet*>& bullets, bool &
     case SDLK_m:
     {
       
-       
+        Mix_Init(MIX_INIT_MP3);
+        Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
+        // Load âm thanh MP3 vào biến Mix_Music
+        Mix_Chunk* music = Mix_LoadWAV("tiengsung.mp3");
+        //if(music == NULL) std::cout << 0;
+        // Phát âm thanh MP3
+        Mix_PlayChannel(-1,music, 0);
         int offsetX, offsetY;
         switch ((int)angle2)
         {
@@ -164,10 +168,17 @@ void GameObject::handles(SDL_Event& event, std::vector<Bullet*>& bullets, bool &
 
     for (auto& bullet : bullets) {
          
-       
          if (checkCollision(bullet->getX(), bullet->getY(), xpos, ypos)) {
             // N?u có va ch?m, ??t l?i v? trí c?a c? hai nhân v?t v? v? trí ban ??u
-             
+
+             Mix_Init(MIX_INIT_MP3);
+             Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
+             // Load âm thanh MP3 vào biến Mix_Music
+             Mix_Music* music = Mix_LoadMUS("bi.mp3");
+
+             // Phát âm thanh MP3
+             Mix_PlayMusic(music, 1);
              
             xpos = initialX; // ??t l?i v? trí c?a nhân v?t
             ypos = initialY;
@@ -287,7 +298,15 @@ void GameObject::handles3(SDL_Event& event, std::vector<Bullet*>& bullets, bool&
     case SDLK_p:
     {
         
-       
+
+        Mix_Init(MIX_INIT_MP3);
+        Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
+        // Load âm thanh MP3 vào biến Mix_Music
+        Mix_Music* music = Mix_LoadMUS("tiengsung.mp3");
+
+        // Phát âm thanh MP3
+        Mix_PlayMusic(music, 1);
         int offsetX, offsetY;
         switch ((int)angle3)
         {
@@ -315,7 +334,14 @@ void GameObject::handles3(SDL_Event& event, std::vector<Bullet*>& bullets, bool&
 
         if (checkCollision(bullet->getX(), bullet->getY(), xpos, ypos)) {
             // N?u có va ch?m, ??t l?i v? trí c?a c? hai nhân v?t v? v? trí ban ??u
-           
+            Mix_Init(MIX_INIT_MP3);
+            Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
+            // Load âm thanh MP3 vào biến Mix_Music
+            Mix_Music* music2 = Mix_LoadMUS("bi.mp3");
+
+            // Phát âm thanh MP3
+            Mix_PlayMusic(music2, 1);
            
             xpos = initialX; // ??t l?i v? trí c?a nhân v?t
             ypos = initialY;
@@ -432,7 +458,15 @@ void GameObject::handles2(SDL_Event& event, std::vector<Bullet*>& bullets,bool &
     case SDLK_f:
     {
         
-       
+
+        Mix_Init(MIX_INIT_MP3);
+        Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
+        // Load âm thanh MP3 vào biến Mix_Music
+        Mix_Music* music = Mix_LoadMUS("tiengsung.mp3");
+
+        // Phát âm thanh MP3
+        Mix_PlayMusic(music, 1);
         int offsetX, offsetY;
         switch ((int)angle)
         {
@@ -459,7 +493,14 @@ void GameObject::handles2(SDL_Event& event, std::vector<Bullet*>& bullets,bool &
         if (checkCollision(bullet->getX(), bullet->getY(), xpos, ypos)) {
             // N?u có va ch?m, ??t l?i v? trí c?a c? hai nhân v?t v? v? trí ban ??u
             std::cout << xpos << ' ' << ypos << std::endl;
-           
+            Mix_Init(MIX_INIT_MP3);
+            Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
+            // Load âm thanh MP3 vào biến Mix_Music
+            Mix_Music* music3 = Mix_LoadMUS("bi.mp3");
+
+            // Phát âm thanh MP3
+            Mix_PlayMusic(music3, 1);
            
             xpos = initialX; // ??t l?i v? trí c?a nhân v?t
             ypos = initialY;

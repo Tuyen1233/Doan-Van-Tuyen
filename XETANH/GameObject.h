@@ -28,7 +28,11 @@ public:
 	void setInitialPosition(int x, int y) { initialX = x; initialY = y; }
 	int getX();
 	int getY();
-
+	void resetPos()
+	{
+		xpos = initialX;
+		ypos = initialY;
+	}
 
 
 private:
@@ -43,8 +47,6 @@ private:
 	float angle2 = 0; float angle3 = 0;
 	SDL_RendererFlip flip2 = SDL_FLIP_NONE;
 	SDL_RendererFlip flip3= SDL_FLIP_NONE;
-
-
 	
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect;

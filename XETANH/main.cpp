@@ -1,4 +1,4 @@
-#include "Game.h"
+﻿#include "Game.h"
 
 Game* game = nullptr;
 
@@ -12,9 +12,11 @@ int main(int argc, char* argv[])
 
 
 	while (kk == 1) {
-	game = new Game();
+		
+ 	game = new Game();
+
 	game->init("GameWindow", 800, 640, false);
-	
+
 		while (game->running())
 		{
 
@@ -33,9 +35,11 @@ int main(int argc, char* argv[])
 			if (frameDelay > frameTime) {
 				SDL_Delay(frameDelay - frameTime);
 			}
-
+			
 
 		}
+
+		
 
 		game->clean();
 	}
