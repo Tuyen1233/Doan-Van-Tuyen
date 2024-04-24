@@ -2,6 +2,7 @@
 
 #include"ECS.h "
 #include"Components.h"
+#include <SDL_mixer.h>
 
 Map* map;
 
@@ -111,13 +112,21 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 		map = new Map();
 	
 
-	
+		Mix_Init(MIX_INIT_MP3);
+		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+
+		// Load âm thanh MP3 vào biến Mix_Music
+		Mix_Music* music = Mix_LoadMUS("nhacnen.mp3");
+
+		// Phát âm thanh MP3
+		Mix_PlayMusic(music, 1);
+		Mix_VolumeMusic(64);
 
 
 
 
 	newPlayer.addComponent<PositionComponent>();
-
+	
 }
 
 void Game::handleEvents(int & kk)
@@ -127,6 +136,7 @@ void Game::handleEvents(int & kk)
 	int k3 = 1;
 	if (gameState == GameState::MENU) {
 		handleEventsMenu(kk);
+
 	}
 	else if(gameState == GameState::PLAY) {
 		SDL_Event event;

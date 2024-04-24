@@ -3,7 +3,7 @@
 #include"Game.h"
 #include"Map.h"
 #include "Bullet.h"
-#include <SDL_mixer.h>
+
 
 
 
@@ -25,7 +25,6 @@ public:
 	void Render3();
 
 
-
 	void setInitialPosition(int x, int y) { initialX = x; initialY = y; }
 	int getX();
 	int getY();
@@ -45,6 +44,8 @@ private:
 	SDL_RendererFlip flip2 = SDL_FLIP_NONE;
 	SDL_RendererFlip flip3= SDL_FLIP_NONE;
 
+
+	
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect;
 

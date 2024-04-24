@@ -8,6 +8,7 @@
 #include "GameObject.h"
 #include "Bullet.h"
 #include "Map.h"
+#include <SDL_mixer.h>
 #include<vector>
 
 enum GameState {

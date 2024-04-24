@@ -17,6 +17,7 @@ int main(int argc, char* argv[])
 	
 		while (game->running())
 		{
+
 			//if (game->gamestate == 0)
 			//{
 
