@@ -13,8 +13,10 @@
 enum GameState {
 	MENU,
 	PLAY,
+	PLAY2,
 	EXIT,
-	EXIT2
+	EXIT2,
+	EXIT3,
 };
 
 class Game
@@ -34,6 +36,9 @@ public:
 
 	bool dead;
 	bool dead2;
+	bool dead3;
+	
+
 
 	static SDL_Renderer* renderer;
 
@@ -45,7 +50,7 @@ private:
 	SDL_Window* window;
 	// Khai báo vector ch?a ??n
 	std::vector<Bullet*> bullets;
-	std::vector<Bullet*> bullets2;
+
 
 	// Khai báo t?c ?? c?a ??n
 	int k = 0;
@@ -59,4 +64,6 @@ private:
 	void renderInstructions(SDL_Texture* instructionsTexture);
 	void renderResult(SDL_Texture* instructionsTexture);
 	void renderResult2(SDL_Texture* instructionsTexture);
+	void renderResult3(SDL_Texture* instructionsTexture);
+
 };

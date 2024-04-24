@@ -40,7 +40,7 @@ bool GameObject::checkCollision(int bulletX, int bulletY, int tankX, int tankY) 
     return false;
 }
 
-void GameObject::handles(SDL_Event& event, std::vector<Bullet*>& bullets2, std::vector<Bullet*>& bullets, bool & dead) {
+void GameObject::handles(SDL_Event& event, std::vector<Bullet*>& bullets, bool & dead) {
     int x = xpos / 32;
     int y = ypos / 32;
     int sodo[20][25] = {
@@ -150,7 +150,7 @@ void GameObject::handles(SDL_Event& event, std::vector<Bullet*>& bullets2, std::
         case -90:
             offsetX = 0; offsetY = 1; break;
         }
-        Bullet* bullet = new Bullet(xpos + offsetX * 32, ypos + offsetY * 32, angle2);
+        Bullet* bullet = new Bullet(xpos + offsetX * 60, ypos + offsetY * 60, angle2);
         bullets.push_back(bullet);
 
         break;
@@ -160,7 +160,7 @@ void GameObject::handles(SDL_Event& event, std::vector<Bullet*>& bullets2, std::
         break;
     }
 
-    for (auto& bullet : bullets2) {
+    for (auto& bullet : bullets) {
          
        
          if (checkCollision(bullet->getX(), bullet->getY(), xpos, ypos)) {
@@ -185,12 +185,151 @@ GameObject::~GameObject() {
     SDL_DestroyTexture(objTexture);
 }
 
+void GameObject::handles3(SDL_Event& event, std::vector<Bullet*>& bullets, bool& dead3) {
+    int x = xpos / 32;
+    int y = ypos / 32;
+    int sodo[20][25] = {
+   {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+    {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2},
+    {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2},
+    {2,0,0,0,0,0,2,1,1,1,1,0,0,0,0,0,0,0,0,0,2,0,0,0,2},
+    {2,0,0,0,0,0,2,2,2,2,2,2,2,0,0,0,0,2,2,2,2,0,0,0,2},
+    {2,0,0,0,0,2,2,1,1,1,1,1,2,0,0,0,0,1,1,1,1,0,0,0,2},
+    {2,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,2},
+    {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+    {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+    {2,1,0,0,2,2,2,1,1,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,2},
+    {2,1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2},
+    {2,1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1,1,2},
+    {2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2},
+    {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,2},
+    {2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,0,0,0,2},
+    {2,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,1,0,0,0,0,0,0,2},
+    {2,0,0,0,0,0,0,0,0,0,2,1,1,1,1,1,2,1,1,0,0,0,0,0,2},
+    {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+    {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+    {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+    };
+
+
+    switch (event.key.keysym.sym) {
+    case SDLK_y:
+        if (angle3 != 90)
+        {
+            angle3 = 90;
+            flip3 = SDL_FLIP_VERTICAL;
+            break;
+        }
+        // X? lý di chuy?n lên
+
+        if (sodo[y - 1][x] == 2) {}
+        else if (sodo[y - 1][x] == 1) {
+            SDL_SetTextureAlphaMod(objTexture, 30); ypos -= 32;
+        }
+        else {
+            SDL_SetTextureAlphaMod(objTexture, 255);
+
+            ypos -= 32;
+        }
+        break;
+    case SDLK_h:
+        if (angle3 != -90)
+        {
+            angle3 = -90;
+            flip3 = SDL_FLIP_VERTICAL;
+            break;
+        }
+        // X? lý di chuy?n xu?ng
+        if (sodo[y + 1][x] == 2) {}
+        else if (sodo[y + 1][x] == 1) {
+            SDL_SetTextureAlphaMod(objTexture, 30); ypos += 32;
+        }
+        else {
+            SDL_SetTextureAlphaMod(objTexture, 255);
+            ypos += 32;
+        }
+
+        break;
+    case SDLK_g:
+        // X? lý di chuy?n sang trái
+        if (angle3 != 180)
+        {
+            angle3 = 180;
+            //flip = SDL_FLIP_NONE;
+            break;
+        }
+        if (sodo[y][x - 1] == 2) {}
+        else if (sodo[y][x - 1] == 1) {
+            SDL_SetTextureAlphaMod(objTexture, 30); xpos -= 32;
+        }
+        else {
+            SDL_SetTextureAlphaMod(objTexture, 255);
+            xpos -= 32;
+        }
+        break;
+    case SDLK_j:
+        // X? lý di chuy?n sang ph?i
+        if (angle3 != 0)
+        {
+            angle3 = 0;
+            break;
+        }
+        if (sodo[y][x + 1] == 2) {}
+        else if (sodo[y][x + 1] == 1) { SDL_SetTextureAlphaMod(objTexture, 30); xpos += 32; }
+        else {
+            SDL_SetTextureAlphaMod(objTexture, 255);
+            xpos += 32;
+        }
+        break;
+    case SDLK_p:
+    {
+        int offsetX, offsetY;
+        switch ((int)angle3)
+        {
+        case 0:
+            offsetX = 1; offsetY = 0; break;
+        case 180:
+            offsetX = -1; offsetY = 0; break;
+        case 90:
+            offsetX = 0; offsetY = -1; break;
+        case -90:
+            offsetX = 0; offsetY = 1; break;
+        }
+        Bullet* bullet = new Bullet(xpos + offsetX * 60, ypos + offsetY * 60, angle3);
+        bullets.push_back(bullet);
+
+        break;
+    }
+
+    default:
+        break;
+    }
+
+    for (auto& bullet : bullets) {
+
+
+        if (checkCollision(bullet->getX(), bullet->getY(), xpos, ypos)) {
+            // N?u có va ch?m, ??t l?i v? trí c?a c? hai nhân v?t v? v? trí ban ??u
+
+            xpos = initialX; // ??t l?i v? trí c?a nhân v?t
+            ypos = initialY;
+
+            std::cout << "Lose"; bullet->destroy();
+            dead3 = true;
 
 
 
 
+        }
+    }
 
-void GameObject::handles2(SDL_Event& event, std::vector<Bullet*>& bullets, std::vector<Bullet*>& bullets2,bool &dead2) {
+
+}
+
+
+
+
+void GameObject::handles2(SDL_Event& event, std::vector<Bullet*>& bullets,bool &dead2) {
     int x = xpos / 32;
     int y = ypos / 32;
     int sodo[20][25] = {
@@ -298,8 +437,8 @@ void GameObject::handles2(SDL_Event& event, std::vector<Bullet*>& bullets, std::
         case -90:
             offsetX = 0; offsetY = 1; break;
         }
-        Bullet* bullet = new Bullet(xpos + offsetX * 32, ypos + offsetY * 32, angle);
-        bullets2.push_back(bullet);
+        Bullet* bullet = new Bullet(xpos + offsetX * 60, ypos + offsetY * 60, angle);
+        bullets.push_back(bullet);
         break;
     }
 
@@ -356,7 +495,12 @@ void GameObject::Render2()
     SDL_RenderCopyEx(Game::renderer, objTexture, &srcRect, &destRect, -angle2, NULL, SDL_FLIP_NONE);
 
 }
+void GameObject::Render3()
+{
+    //SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destRect);
+    SDL_RenderCopyEx(Game::renderer, objTexture, &srcRect, &destRect, -angle3, NULL, SDL_FLIP_NONE);
 
+}
 
 
 
