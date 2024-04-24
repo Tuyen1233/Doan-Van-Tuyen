@@ -3,6 +3,9 @@
 #include"Game.h"
 #include"Map.h"
 #include "Bullet.h"
+#include <SDL_mixer.h>
+
+
 
 #include<vector>
 class GameObject {

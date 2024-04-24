@@ -138,6 +138,10 @@ void GameObject::handles(SDL_Event& event, std::vector<Bullet*>& bullets, bool &
         break;
     case SDLK_m:
     {
+        Mix_Init(MIX_INIT_MP3);
+        Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+        Mix_Music* music = Mix_LoadMUS("tiengsung.mp3");
+        Mix_PlayMusic(music, 1);
         int offsetX, offsetY;
         switch ((int)angle2)
         {
@@ -165,7 +169,10 @@ void GameObject::handles(SDL_Event& event, std::vector<Bullet*>& bullets, bool &
        
          if (checkCollision(bullet->getX(), bullet->getY(), xpos, ypos)) {
             // N?u có va ch?m, ??t l?i v? trí c?a c? hai nhân v?t v? v? trí ban ??u
-            
+             Mix_Init(MIX_INIT_MP3);
+             Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+             Mix_Music* music = Mix_LoadMUS("bi.mp3");
+             Mix_PlayMusic(music, 1);
             xpos = initialX; // ??t l?i v? trí c?a nhân v?t
             ypos = initialY;
 
@@ -283,6 +290,10 @@ void GameObject::handles3(SDL_Event& event, std::vector<Bullet*>& bullets, bool&
         break;
     case SDLK_p:
     {
+        Mix_Init(MIX_INIT_MP3);
+        Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+        Mix_Music* music = Mix_LoadMUS("tiengsung.mp3");
+        Mix_PlayMusic(music, 1);
         int offsetX, offsetY;
         switch ((int)angle3)
         {
@@ -310,7 +321,10 @@ void GameObject::handles3(SDL_Event& event, std::vector<Bullet*>& bullets, bool&
 
         if (checkCollision(bullet->getX(), bullet->getY(), xpos, ypos)) {
             // N?u có va ch?m, ??t l?i v? trí c?a c? hai nhân v?t v? v? trí ban ??u
-
+            Mix_Init(MIX_INIT_MP3);
+            Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+            Mix_Music* music = Mix_LoadMUS("bi.mp3");
+            Mix_PlayMusic(music, 1);
             xpos = initialX; // ??t l?i v? trí c?a nhân v?t
             ypos = initialY;
 
@@ -425,6 +439,10 @@ void GameObject::handles2(SDL_Event& event, std::vector<Bullet*>& bullets,bool &
         break;
     case SDLK_f:
     {
+        Mix_Init(MIX_INIT_MP3);
+        Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+        Mix_Music* music = Mix_LoadMUS("tiengsung.mp3");
+        Mix_PlayMusic(music, 1);
         int offsetX, offsetY;
         switch ((int)angle)
         {
@@ -451,7 +469,10 @@ void GameObject::handles2(SDL_Event& event, std::vector<Bullet*>& bullets,bool &
         if (checkCollision(bullet->getX(), bullet->getY(), xpos, ypos)) {
             // N?u có va ch?m, ??t l?i v? trí c?a c? hai nhân v?t v? v? trí ban ??u
             std::cout << xpos << ' ' << ypos << std::endl;
-           
+            Mix_Init(MIX_INIT_MP3);
+            Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+            Mix_Music* music = Mix_LoadMUS("bi.mp3");
+            Mix_PlayMusic(music, 1);
             xpos = initialX; // ??t l?i v? trí c?a nhân v?t
             ypos = initialY;
            
