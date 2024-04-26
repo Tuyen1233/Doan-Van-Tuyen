@@ -31,10 +31,13 @@ Ví dụ như
 ### Về source của GAME
 -Bullet:
  Quản lý xử lý đường đi của đạn.
+ ### 
 -GameObject:
  Xử lý di chuyển của nhân vật, âm thanh của nhân vật sau khi bắn, xử lý xa chạm giữa nhân vật và map, xử ly va chạm giữa nhân vật và đan.
+  ### 
 -Game:
  Khởi tạo cửa sổ, viết các lệnh render, thực hiện các lệnh update, handle sao cho đúng tuần tự.
+  ### 
 -main:
  Thực hiện vòng lặp chính của game.
  ### LINK video giới thiệu về game
